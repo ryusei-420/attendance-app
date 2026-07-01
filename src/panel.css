@@ -1,0 +1,50 @@
+.change-name {
+
+    width: 50% ;
+    height: 50% ;
+    background-color: rgba(4, 4, 4, 0.066) ;
+    display: flex ;
+    flex-direction: column ;
+    align-items: center ;
+    justify-content: center ;
+
+}
+
+.change-name p {
+
+    margin: 20px ;
+    text-align: center ;
+    font-size: 20px ;
+}
+
+.change-name label {
+
+    text-align: center ;
+    margin: 40px ;
+}
+
+.change-name input {
+
+    margin-left: 10px ;
+    width: 250px ;
+}
+
+
+.change-name button {
+
+    background-color: rgba(172, 198, 249, 0.826) ;
+    width: 50% ;
+    height: 30px ;
+    margin: 30px ;
+}
+
+.change-email {
+
+    width: 50% ;
+    height: 50% ;
+    background-color: rgba(4, 4, 4 , 0.066) ;
+    display: flex ;
+    flex-direction: column ;
+    align-items: center ;
+    
+}
