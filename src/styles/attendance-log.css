@@ -1,0 +1,63 @@
+.attendance-log {
+  width: 100%;
+  max-width: 720px;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.attendance-log--empty {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: var(--color-text-muted);
+}
+
+.attendance-log__title {
+  margin: 0 0 1.25rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.attendance-log__table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.attendance-log__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.attendance-log__table thead {
+  background: var(--color-bg);
+}
+
+.attendance-log__table th,
+.attendance-log__table td {
+  padding: 0.875rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.attendance-log__table th {
+  font-weight: 600;
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.attendance-log__table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.attendance-log__table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.attendance-log__table td:not(:first-child) {
+  font-variant-numeric: tabular-nums;
+}

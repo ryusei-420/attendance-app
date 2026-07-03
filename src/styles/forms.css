@@ -1,0 +1,76 @@
+.account-form {
+  width: 100%;
+  max-width: 420px;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+}
+
+.account-form--danger {
+  border-top: 4px solid var(--color-danger);
+}
+
+.account-form__title {
+  margin: 0 0 1.25rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.account-form__description {
+  margin-bottom: 1.25rem;
+  color: var(--color-text-muted);
+}
+
+.account-form__warning {
+  margin-bottom: 1.25rem;
+  padding: 0.75rem 1rem;
+  background: #fef2f2;
+  color: var(--color-danger);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+}
+
+.account-form__demo-note {
+  margin: -0.5rem 0 1rem;
+  padding: 0.625rem 0.875rem;
+  background: #eff6ff;
+  color: #1d4ed8;
+  border-radius: var(--radius-sm);
+  font-size: 0.8125rem;
+}
+
+.account-form__label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.account-form__input {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+}
+
+.account-form__input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.account-form__message {
+  margin-bottom: 1rem;
+  padding: 0.625rem 0.875rem;
+  background: #eff6ff;
+  color: var(--color-primary);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+}
+
+.account-form .btn {
+  margin-top: 0.5rem;
+}

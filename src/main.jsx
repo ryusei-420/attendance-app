@@ -1,16 +1,13 @@
-import { createRoot } from 'react-dom/client'
-import App from "./App"
-import AuthProvider from "./AuthProvider"
-import { BrowserRouter } from 'react-router-dom';
-import "./index.css";
+import { createRoot } from "react-dom/client";
+import App from "./App";
+import AuthProvider from "./components/auth/AuthProvider";
+import { BrowserRouter } from "react-router-dom";
+import "./styles/global.css";
 
-createRoot(document.getElementById('root')).render(
-    <BrowserRouter>
-        <AuthProvider>
-            <div className="top-bar" ></div>
-            <div className="top-screen">
-                <App />
-            </div>
-        </AuthProvider>
-    </BrowserRouter>
+createRoot(document.getElementById("root")).render(
+  <BrowserRouter>
+    <AuthProvider>
+      <App />
+    </AuthProvider>
+  </BrowserRouter>
 );
