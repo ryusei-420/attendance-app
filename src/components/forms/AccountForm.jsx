@@ -8,7 +8,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth, db } from "../../firebase/firebase";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "../auth/AuthContext";
 import { isDemoUser, setDemoUserName } from "../../utils/demoMode";
 import "../../styles/forms.css";
@@ -20,7 +20,18 @@ const AccountForm = ({ uid, formMode, user, onDemoUserNameChange }) => {
   const [isReauthenticated, setIsReauthenticated] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
   const isDemo = isDemoUser(user);
+
+  useEffect(() => {
+    if (!successMessage) return;
+
+    const timer = setTimeout(() => {
+      setSuccessMessage("");
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [successMessage]);
 
   const handleUserName = async (event) => {
     event.preventDefault();
@@ -31,7 +42,7 @@ const AccountForm = ({ uid, formMode, user, onDemoUserNameChange }) => {
       setDemoUserName(value);
       onDemoUserNameChange?.(value);
       setValue("");
-      setMessage("アカウント名を更新しました（デモ）");
+      setSuccessMessage("アカウント名を更新しました（デモ）");
       setLoading(false);
       return;
     }
@@ -45,7 +56,7 @@ const AccountForm = ({ uid, formMode, user, onDemoUserNameChange }) => {
         await setDoc(ref, { userName: value, uid });
       }
       setValue("");
-      setMessage("アカウント名を更新しました");
+      setSuccessMessage("アカウント名を更新しました");
     } catch (error) {
       console.error(error.code);
       setMessage("更新に失敗しました");
@@ -61,7 +72,7 @@ const AccountForm = ({ uid, formMode, user, onDemoUserNameChange }) => {
 
     if (isDemo) {
       if (isReauthenticated) {
-        setMessage("メールアドレスを変更しました（デモ — 実際には保存されません）");
+        setSuccessMessage("メールアドレスを変更しました（デモ — 実際には保存されません）");
       } else {
         setMessage("新しいメールアドレスを入力してください（デモ）");
       }
@@ -100,7 +111,7 @@ const AccountForm = ({ uid, formMode, user, onDemoUserNameChange }) => {
 
     if (isDemo) {
       if (isReauthenticated) {
-        setMessage("パスワードを変更しました（デモ — 実際には保存されません）");
+        setSuccessMessage("パスワードを変更しました（デモ — 実際には保存されません）");
       } else {
         setMessage("新しいパスワードを入力してください（デモ）");
       }
@@ -116,7 +127,7 @@ const AccountForm = ({ uid, formMode, user, onDemoUserNameChange }) => {
     try {
       if (isReauthenticated) {
         await updatePassword(user, value);
-        setMessage("パスワードを変更しました");
+        setSuccessMessage("パスワードを変更しました");
       } else {
         await reauthenticateWithCredential(user, cred);
         setMessage("新しいパスワードを入力してください");
@@ -192,6 +203,14 @@ const AccountForm = ({ uid, formMode, user, onDemoUserNameChange }) => {
   const demoNotice = isDemo ? (
     <p className="account-form__demo-note">デモモード — 変更はブラウザ内のみ反映されます</p>
   ) : null;
+
+  if (successMessage !== "" ) {
+    return (
+      <div>
+        <p>{successMessage}</p>
+      </div>
+    )
+  }
 
   if (formMode === "changeName") {
     return (
