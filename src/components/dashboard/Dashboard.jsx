@@ -76,7 +76,7 @@ const Dashboard = ({ user }) => {
 
       <div className="dashboard-body">
         {showPanel && (
-          <aside className="dashboard-sidebar">
+          <aside className={`dashboard-sidebar ${showPanel ? "dashboard-sidebar--open" : ""}`}>
             <p className="dashboard-sidebar__title">メニュー</p>
             {sidebarItems.map((item) => (
               <button
